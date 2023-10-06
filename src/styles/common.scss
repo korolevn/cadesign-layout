@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Helios";
+  font-style: normal;
+
+  src:    url("../assets/fonts/Helios-Regular.ttf") format("ttf"),
+          url("../assets/fonts/Helios-Regular.woff") format("woff"),
+          url("../assets/fonts/Helios-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: 600;
+  font-family: "HeliosC";
+  font-style: normal;
+
+  src:    url("../assets/fonts/HeliosC-Bold.ttf") format("ttf"),
+          url("../assets/fonts/HeliosC-Bold.woff") format("woff"),
+          url("../assets/fonts/HeliosC-Bold.woff2") format("woff2"),
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: "Gilroy";
+  font-style: normal;
+
+  src:    url("../assets/fonts/Gilroy-Medium.ttf") format("ttf"),
+          url("../assets/fonts/Gilroy-Medium.woff") format("woff");
+}
+
+body {
+  margin: 0;
+
+  font-family: "Helios", Arial, sans-serif;
+  font-size: 13px;
+  color: $dark;
+}
