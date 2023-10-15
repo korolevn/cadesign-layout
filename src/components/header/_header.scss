@@ -1,5 +1,3 @@
-// :TODO svg-sprite
-
 .header {
   position: relative;
 
@@ -14,33 +12,35 @@
   z-index: 1;
 
   border-bottom: 1px solid $stroke2;
-  padding-bottom: 27px;
-  padding-top: 46px;
 
   background-color: $white;
 }
 
 .header__top-wrapper {
+  @include container;
+
   display: flex;
   align-items: center;
-
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 40px;
 }
 
 .header__logo {
   margin-right: auto;
+
+  padding-bottom: 28px;
+  padding-top: 46px;
 }
 
 .navigation {
   display: flex;
+
+  position: relative;
 
   color: $dark;
 }
 
 .navigation__wrapper {
   display: flex;
+  align-items: center;
 
   column-gap: 64px;
 }
@@ -64,7 +64,7 @@
     width: 28px;
     height: 2px;
 
-    transition-duration: 0.3s;
+    transition-duration: $transitionTime;
   }
   &::before {
     top: 0;
@@ -72,16 +72,16 @@
 }
 
 .header__content {
+  @include container;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  max-width: 1680px;
   height: 448px;
-  margin: 0 auto;
   margin-top: 138px;
-  max-width: 1240px;
-  padding: 120px 40px;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .navigation__menu {
@@ -97,25 +97,75 @@
   font-size: 16px;
 }
 
-.menu-item--active {
-  color: $blue;
+.menu-item-link {
+  @include clearLink;
+
+  position: relative;
+
+  padding-bottom: 42px;
+  padding-top: 50px;
 }
 
-.menu-item-link {
-  @include link;
+.menu-item-link:hover {
+  &::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+
+    border-bottom: 2px solid $orange;
+    width: 100%;
+    margin-bottom: -1px;
+  }
 }
 
 .dropdown__wrapper {
-  display: none;
-
   position: absolute;
 
   box-shadow: 0px 17px 46px rgba($color: $black, $alpha: 0.08);
   background-color: $white;
+
+  transition-duration: $transitionTime;
+  transform-origin: top;
+
+  opacity: 0;
+
+  transform: scaleY(0);
+
+  animation-name: growUp;
+  animation-duration: $transitionTime;
+  animation-timing-function: ease-out;
 }
 
 .dropdown:hover .dropdown__wrapper {
-  display: block;
+  padding-top: 16px;
+
+  opacity: 1;
+
+  transform: scaleY(1);
+
+  animation-name: growDown;
+  animation-duration: $transitionTime;
+}
+
+@keyframes growDown {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1)
+  }
+}
+
+@keyframes growUp {
+  from {
+      transform: scaleY(1);
+  }
+  to {
+      transform: scaleY(0)
+  }
 }
 
 .dropdown__show-button {
@@ -130,6 +180,8 @@
   background-image: url("../../assets/images/arrow.svg");
   background-position: 100% 50%;
   background-repeat: no-repeat;
+
+  cursor: pointer;
 }
 
 .socials {
@@ -137,32 +189,22 @@
   flex-wrap: wrap;
 
   margin: 0;
-  margin-top: 16px;
-  width: 173px;
-  height: 137px;
+  width: 135px;
+  height: 100px;
   padding: 20px;
   list-style-type: none;
+  box-sizing: content-box;
 
 }
 
 .social {
+  border: 1px solid $gray4;
+  margin: -1px 0 0 -1px;
   width: 50%;
-  border: 1px solid $stroke3;
-
-  &:first-child {
-    margin-bottom: -1px;
-    margin-right: -1px;
-  }
-  &:nth-child(2) {
-    margin-bottom: -1px;
-  }
-  &:last-child {
-    margin-left: -1px;
-  }
 }
 
 .social-link {
-  @include link;
+  @include clearLink;
 
   display: flex;
   justify-content: center;
@@ -174,13 +216,13 @@
 
   background-repeat: no-repeat;
   background-position: 50% 50%;
-
-  // &:hover {
-  //   border: 1px solid rgba($color: $stroke, $alpha: 1);
-  // }
 }
 
-.social-link:hover path {
+.social-icon {
+  fill: $orange;
+}
+
+.social-link:hover .social-icon {
   fill: $mainBlue;
 }
 
@@ -213,18 +255,10 @@
 .team-part-button {
   @include orangeButton;
 
-
   align-self: flex-start;
+
   padding-right: 34px;
   padding-left: 30px;
-
-  font-size: 16px;
-
-  cursor: pointer;
-}
-
-.team-part-button-caption {
-  position: relative;
 }
 
 @media (max-width: 1240px) {
@@ -235,23 +269,13 @@
 }
 
 @media (max-width: $tabletWidth) {
-  .header {
-    padding: 0 40px;
-  }
-
-  .header__top {
-    padding: 0 40px;
+  .header__top-wrapper {
     padding-top: 34px;
     padding-bottom: 37px;
   }
 
-  .header__top-wrapper {
-    padding: 0;
-  }
-
   .header__content {
     height: 398px;
-    padding: 0;
     padding-top: 87px;
     margin-top: 100px;
     padding-bottom: 126px;
@@ -266,8 +290,18 @@
     color: inherit;
   }
 
+  .navigation__wrapper {
+    display: flex;
+    align-self: flex-start;
+
+    margin-top: 24px;
+    margin-left: 20px;
+  }
+
   .navigation__toggle-button {
     display: block;
+
+    cursor: pointer;
   }
 
   .navigation--closed {
@@ -292,9 +326,43 @@
     row-gap: 40px;
   }
 
+  .menu-item-link {
+    padding: 0;
+  }
 
-  .dropdown__show-button {
-    display: none;
+  .menu-item-link:hover {
+    &::after {
+      display: none;
+    }
+
+    padding: 0;
+
+    color: $blue;
+  }
+
+
+
+  .dropdown {
+    margin-top: 20px;
+  }
+
+  .dropdown:hover .dropdown__wrapper {
+    padding-top: 0;
+
+    animation: none;
+  }
+
+  .dropdown__wrapper {
+    left: 0;
+    right: 0;
+
+    padding: 0 $desktopHorizontalPaddings;
+
+    opacity: 1;
+    background-color: transparent;
+
+    transform: none;
+    animation: none;
   }
 
   .navigation--opened {
@@ -306,7 +374,7 @@
 
     width: 100vw;
     height: 100vh;
-    padding: 0 40px;
+    padding: 0 $desktopHorizontalPaddings;
     padding-top: 34px;
 
     background-color: $mainBlue;
@@ -332,24 +400,58 @@
         transform: rotate(-45deg);
       }
     }
+
+    & .dropdown__show-button {
+      display: none;
+    }
+  }
+
+  .header__logo {
+    padding: 0;
   }
 
   .header__logo:has(~ .navigation--opened) {
     display: none;
   }
+
+  .socials {
+    flex-wrap: nowrap;
+
+    column-gap: 16px;
+
+    width: 100%;
+    height: 35px;
+    padding: 0;
+  }
+
+  .social {
+    border: 1px solid rgba($color: $white, $alpha: 0.08);
+
+    &:hover {
+      border-color: $gray4;
+    }
+  }
+
+  .social-icon {
+    fill: $white;
+  }
+
+  .social-link:hover .social-icon {
+    fill: $white;
+  }
 }
 
 @media (max-width: $mobileWidth) {
   .header {
-    padding: 0 20px;
+    padding: 0 $mobileHorizontalPaddings;
   }
 
-  .header__top {
-    padding: 24px 20px;
+  .header__top-wrapper {
+    padding: 24px $mobileHorizontalPaddings;
   }
 
   .navigation--opened {
-    padding: 0 20px;
+    padding: 0 $mobileHorizontalPaddings;
     padding-top: 24px;
   }
 
@@ -362,9 +464,9 @@
 
   .header__title {
     align-self: center;
-
     max-width: 280px;
 
+    text-align: center;
     font-size: 22px;
   }
 
@@ -378,5 +480,9 @@
     padding-left: 30px;
 
     font-size: 14px;
+  }
+
+  .dropdown__wrapper {
+    padding: 0 $mobileHorizontalPaddings;
   }
 }

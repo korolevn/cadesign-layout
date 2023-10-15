@@ -1,3 +1,6 @@
+$sliderButtonHeight: 94px;
+$sliderButtonWidth: 52px;
+
 *,
 *::before,
 *::after {
@@ -33,10 +36,95 @@
           url("../assets/fonts/Gilroy-Medium.woff") format("woff");
 }
 
+html {
+  position: relative;
+}
+
 body {
   margin: 0;
 
   font-family: "Helios", Arial, sans-serif;
   font-size: 13px;
   color: $dark;
+}
+
+.slides {
+  &:hover {
+    cursor: grab;
+  }
+}
+
+.slider-bullets {
+  display: flex;
+  justify-content: center;
+  column-gap: 25px;
+}
+
+.slider-bullet {
+  border: none;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+
+  background-color: $stroke3;
+
+  cursor: pointer;
+}
+
+.slider-bullet--active {
+  background-color: $orange;
+}
+
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+
+  margin-top: calc(-1 * $sliderButtonHeight / 2);
+  border: 1px solid $gray4;
+  width: $sliderButtonWidth;
+  height: $sliderButtonHeight;
+
+  background-color: $gray5;
+
+  cursor: pointer;
+
+  &:hover:enabled {
+    border: none;
+
+    background-color: $white;
+  }
+
+  &::after {
+    @include arrow;
+
+    top: 50%;
+    left: 50%;
+
+    margin-top: -2px;
+    margin-left: -4px;
+
+    transform: rotate(225deg);
+  }
+
+    &:nth-of-type(1) {
+    left: 0;
+    margin-left: 40px;
+  }
+
+  &:nth-of-type(2) {
+    right: 0;
+    margin-right: 40px;
+
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    background-color: rgba($color: $white, $alpha: 0.7);
+  }
+
 }

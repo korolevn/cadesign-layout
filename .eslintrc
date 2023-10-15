@@ -5,7 +5,9 @@
     },
     "ignorePatterns": ["node_modules/"],
     "rules": {
-      "quotes": ["error", "double"]
+      "quotes": ["error", "double"],
+      "no-param-reassign": "off",
+      "no-console": "off",
+      "no-unneeded-ternary": "off"
     }
   }
-  

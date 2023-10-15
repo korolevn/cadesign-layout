@@ -1,3 +1,92 @@
+@mixin container {
+  max-width: 1270px;
+  margin: 0 auto;
+
+  padding: 0 $desktopHorizontalPaddings;
+}
+
+@mixin clearLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+@mixin clearList {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+@mixin link {
+  @include clearLink;
+  color: $blue;
+}
+
+@mixin cardList {
+  @include clearList();
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  text-align: center;
+}
+
+@mixin card {
+
+  list-style-type: none;
+  text-align: center;
+
+  &:hover {
+    box-shadow: 0px 4px 52px rgba($color: $black, $alpha: 0.13);
+  }
+}
+
+@mixin emptyButton {
+  border: none;
+  background-color: transparent;
+}
+
+@mixin showMoreButton {
+  position: relative;
+
+  display: block;
+
+  margin: 0 auto;
+  border: 1px solid $stroke;
+  padding: 20px 30px;
+  padding-right: 70px;
+
+  background-color: transparent;
+  color: $blue;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $strokeHover;
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    right: 30px;
+
+    margin-top: -2px;
+    height: 5px;
+    width: 5px;
+
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+
+    transform: rotate(45deg);
+  }
+}
+
 @mixin orangeButton {
   position: relative;
 
@@ -5,11 +94,13 @@
   padding: 20px 0;
 
   background-color: $orange;
-  color: inherit;
+  color: $white;
 
   font-family: "HeliosC", Arial, sans-serif;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
+
+  cursor: pointer;
 
   &::before {
     content: "";
@@ -25,19 +116,42 @@
     transition-duration: 0.3s;
   }
 
-  &:hover {
+  &:hover:enabled {
     &::before {
       width: 100%;
     }
   }
+
+  &:disabled {
+    background-color: $gray;
+
+  }
+
+  & span {
+    position: relative;
+  }
 }
 
-@mixin emptyButton {
-  border: none;
-  background-color: transparent;
+@mixin sectionTitle {
+  font-size: 36px;
+  line-height: 28px;
+  font-weight: 400;
 }
 
-@mixin link {
-  color: inherit;
-  text-decoration: none;
+@mixin sectionTitleMobile {
+  @include sectionTitle;
+
+  font-size: 22px;
+}
+
+@mixin arrow {
+  content: "";
+
+  position: absolute;
+
+  height: 5px;
+  width: 5px;
+
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
 }

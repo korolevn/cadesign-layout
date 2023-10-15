@@ -13,7 +13,7 @@ const PATHS = {
   src: path.resolve(__dirname, "src"),
 };
 
-const PAGES_DIR = `${PATHS.src}/components/`;
+const PAGES_DIR = `${PATHS.src}/layout/`;
 const PAGES = fs.readdirSync(PAGES_DIR).filter((fileName) => fileName.endsWith(".pug"));
 
 module.exports = {
@@ -34,6 +34,7 @@ module.exports = {
   },
   plugins: [
     ...PAGES.map((page) => new HtmlWebpackPlugin({
+      inject: "body",
       template: `${PAGES_DIR}/${page}`,
       filename: `./${page.replace(/\.pug/, ".html")}`,
     })),
@@ -44,7 +45,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/i,
+        test: /\.html$/,
         loader: "html-loader",
       },
       {
@@ -52,7 +53,7 @@ module.exports = {
         loader: "pug-loader",
       },
       {
-        test: /\.(c|sa|sc)ss$/i,
+        test: /\.scss$/,
         use: [
           devMode ? "style-loader" : MiniCssExtractPlugin.loader,
           "css-loader",
@@ -84,7 +85,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(jpe?g|png|webp|gif|svg)$/i,
+        test: /\.(jpe?g|png|webp|gif|svg|mp4)$/i,
         use: devMode
           ? []
           : [

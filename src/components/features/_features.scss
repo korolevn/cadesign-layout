@@ -1,0 +1,159 @@
+.features-list.slides {
+  display: none;
+}
+
+.features {
+  @include container;
+
+  padding-top: 76px;
+  padding-bottom: 70px;
+}
+
+.features-list {
+  @include cardList;
+
+  cursor: auto;
+}
+
+.features__bullets {
+  display: none;
+
+  margin-top: 50px;
+}
+
+.feature-icon {
+  fill: $gray6;
+}
+
+.feature {
+  @include card;
+
+  position: relative;
+
+  margin: -1px 0 0 -1px;
+  border: 1px solid $stroke3;
+  width: 33.333%;
+  max-width: 398px;
+  height: 377px;
+  padding: 70px 50px;
+
+  pointer-events: initial;
+
+  transition-duration: $transitionTime;
+
+  &:hover {
+    justify-content: flex-start;
+
+    .feature-description {
+      color: $gray2;
+      user-select: text;
+
+      transform: translate3d(0, -60px, 0);
+    }
+
+    .feature-image, .feature-title {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .feature-icon {
+      fill: $orange;
+    }
+  }
+}
+
+.feature-image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 82px;
+
+  transform: translate3d(0, 50px, 0);
+  transition-duration: $transitionTime;
+}
+
+.feature-title {
+  display: block;
+
+  margin-top: 40px;
+
+  font-size: 20px;
+
+  transform: translate3d(0, 50px, 0);
+  transition-duration: $transitionTime;
+}
+
+.feature-description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  margin: 0;
+  margin-top: 25px;
+  padding: 0 50px;
+
+  font-size: 16px;
+  line-height: 26px;
+  color: transparent;
+
+  transition-duration: $transitionTime;
+  user-select: none;
+
+  transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: $tabletWidth) {
+  .features {
+    padding-top: 62px;
+    padding-bottom: 61px;
+  }
+
+  .feautures__wrapper {
+    overflow: hidden;
+  }
+
+  .features-list {
+    flex-wrap: nowrap;
+    justify-content: start;
+
+    display: none;
+    // for slider
+  }
+
+  .features-list.slides {
+    display: flex;
+    // for slider
+  }
+
+  .features__bullets {
+    display: flex;
+  }
+
+  .feature {
+    margin: 0;
+    min-width: 50%;
+    height: 345px;
+    padding: 60px 24px;
+
+    user-select: none;
+
+    &:hover {
+      .feature-description {
+        user-select: none;
+      }
+
+      .feature-image, .feature-title {
+        transform: translate3d(0, -20px, 0);
+      }
+    }
+  }
+
+  .feature-description {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: $mobileWidth) {
+  .features {
+    display: none;
+  }
+}

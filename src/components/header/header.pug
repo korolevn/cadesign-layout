@@ -18,30 +18,36 @@ header.header
   .header__top
     .header__top-wrapper
       .header__logo
-        include ../../assets/images/logo.svg
+        a(href="#")
+          include ../../assets/images/logo.svg
+
       nav.header__navigation.navigation.navigation--closed
         button.navigation__toggle-button
         .navigation__wrapper
           ul.navigation__menu.menu
             each item in menuItems
-              li.item.menu-item
+              li(class=`menu-item ${item.active ? " menu-item--active" : ""}`)
                 a.menu-item-link(href=item.link)= item.title
-          .navigation__dropdown.dropdown
-            button.dropdown__show-button Социальные сети
-            .dropdown__wrapper
-              ul.navigation__socials.socials
-                  li.social
-                    a.social-link(href="#")= Вконтакте
-                      include ../../assets/images/icon-vk.svg
-                  li.social
-                    a.social-link(href="#")= Одноклассники
-                      include ../../assets/images/icon-ok.svg
-                  li.social
-                    a.social-link(href="#")= Фэйсбук
-                      include ../../assets/images/icon-fb.svg
-                  li.social
-                    a.social-link(href="#")= Инстаграм
-                      include ../../assets/images/icon-inst.svg
+            li.menu-item.navigation__dropdown.dropdown
+              button.dropdown__show-button Социальные сети
+              .dropdown__wrapper
+                ul.navigation__socials.socials
+                    li.social
+                      a.social-link(href="#")= Вконтакте
+                        svg(class="social-icon" width="20" height="10")
+                          use(xlink:href="#icon-vk")
+                    li.social
+                      a.social-link(href="#")= Одноклассники
+                        svg(class="social-icon" width="11" height="18")
+                          use(xlink:href="#icon-ok")
+                    li.social
+                      a.social-link(href="#")= Фэйсбук
+                        svg(class="social-icon" width="9" height="17")
+                          use(xlink:href="#icon-fb")
+                    li.social
+                      a.social-link(href="#")= Инстаграм
+                        svg(class="social-icon" width="15" height="15")
+                          use(xlink:href="#icon-inst")
 
   .header__content
     h1.header__title Энергия твоего роста! – заряжаем твою карьеру
@@ -57,5 +63,5 @@ header.header
       img.header__image.header__image--first(
         src=require("../../assets/images/bg-header-desktop.png")
       )
-    button.team-part-button
-      span.team-part-button-caption Cтать частью команды
+    button.team-part-button.modal-open-button
+      span Cтать частью команды
