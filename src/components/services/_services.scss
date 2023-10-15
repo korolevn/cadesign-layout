@@ -1,0 +1,175 @@
+.services {
+  @include container;
+
+  padding-top: 60px;
+  padding-bottom: 70px;
+
+  text-align: center;
+}
+
+.services__title {
+  margin: 0;
+
+  color: $black;
+
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.services-list {
+  @include clearList;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 70px;
+}
+
+.service {
+  @include card;
+
+  width: 33.333%;
+  max-width: 359px;
+  height: 350px;
+
+  padding: 44px 60px;
+
+  transition-duration: $transitionTime;
+
+  text-wrap: nowrap;
+
+  &:hover {
+    box-shadow: 0px 4px 52px rgba($color: $black, $alpha: 0.13);
+
+    .service-image, .service-title {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .service-image {
+      background-color: $orange;
+    }
+
+    .service-icon {
+      fill: $white;
+    }
+
+    .service__show-more-button {
+      border-color: $stroke;
+
+      color: $blue;
+
+      transform: translate3d(0, 0, 0);
+
+      &:hover {
+        border-color: $strokeHover;
+      }
+
+      &::after {
+        border-color: $black;
+      }
+    }
+  }
+}
+
+.service-title {
+  display: block;
+  margin-top: 44px;
+
+  font-size: 20px;
+  line-height: 26px;
+  color: $black;
+
+  transform: translate3d(0, 70px, 0);
+  transition-duration: $transitionTime;
+}
+
+.service-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 98px;
+  height: 98px;
+
+  background-color: $stroke2;
+
+  transform: translate3d(0, 70px, 0);
+  transition-duration: $transitionTime;
+}
+
+.service-icon {
+  fill: $gray6;
+}
+
+.service__show-more-button {
+  @include showMoreButton;
+
+  border-color: transparent;
+  margin-top: 50px;
+
+  transform: translate3d(0, 30px, 0);
+  transition-duration: $transitionTime;
+
+  color: transparent;
+  &::after {
+    border-color: transparent;
+
+    transition-duration: $transitionTime;
+  }
+}
+
+@media (max-width: $tabletWidth) {
+  .services {
+    padding-top: 86px;
+    padding-bottom: 90px;
+  }
+
+  .services__title {
+    font-size: 22px;
+    line-height: 34px;
+  }
+
+  .services-brake {
+    display: none;
+  }
+
+  .services-list {
+
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    margin-top: 77px;
+  }
+
+  .service {
+    width: auto;
+    height: auto;
+
+    padding: 0;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .service-image, .service-title {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .service-title {
+    margin-top: 40px;
+  }
+
+  .service__show-more-button {
+    display: none;
+  }
+}
+
+@media (max-width: $mobileWidth) {
+  .services {
+    display: none;
+  }
+}

@@ -1,0 +1,168 @@
+.team {
+  padding: 0 40px;
+}
+
+.team__wrapper {
+  position: relative;
+
+  overflow: hidden;
+
+  margin: 0 auto;
+  max-width: 1480px;
+  width: 100%;
+}
+
+.team-list {
+  @include clearList;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.employee {
+  min-width: 1480px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  padding: 0 142px;
+
+  background-color: $gray5;
+
+  user-select: none;
+}
+
+.employee__content {
+  align-self: flex-start;
+  padding-top: 117px;
+  width: 630px;
+}
+
+.employee__name {
+  @include sectionTitle;
+
+  margin: 0;
+}
+
+.employee__position {
+  color: $gray3;
+
+  margin: 0;
+  margin-top: 20px;
+
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.employee__cite {
+  margin: 0;
+  margin-top: 40px;
+
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.employee__image {
+  display: flex;
+  align-items: flex-end;
+
+  pointer-events: none;
+}
+
+.team__bullets {
+  display: none;
+}
+
+// плавный переход без скачков текста между 1680px и 768px
+
+@media (max-width: 1550px) {
+  .employee {
+    position: relative;
+
+    align-items: center;
+    flex-direction: column;
+
+    padding: 0;
+    min-width: 100%;
+
+    background-color: transparent;
+  }
+
+  .employee__content {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    order: 1;
+
+    padding-top: 50px;
+    text-align: center;
+
+  }
+
+  .employee__name {
+    font-size: 28px;
+  }
+
+  .employee__image {
+    order: 0;
+
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+
+    background-color: $gray5;
+  }
+
+  .team__button {
+    top: 200px;
+  }
+
+}
+
+@media (max-width: $tabletWidth) {
+  .employee__image {
+    height: 400px;
+  }
+}
+
+@media (max-width: $mobileWidth) {
+  .team {
+    padding: 16px;
+    padding-top: 38px;
+    padding-bottom: 42px;
+  }
+
+  .employee__name {
+    font-size: 20px;
+  }
+
+  .employee__position {
+    font-size: 13px;
+    line-height: 28px;
+  }
+
+  .employee__content {
+    width: 100%;
+  }
+
+  .employee__cite {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  .employee__image {
+    justify-content: start;
+    height: 200px;
+  }
+
+  .team__bullets {
+    display: flex;
+
+    margin-top: 34px;
+  }
+
+  .team__button {
+    display: none;
+  }
+}

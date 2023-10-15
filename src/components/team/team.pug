@@ -1,0 +1,64 @@
+.team
+  .team__wrapper.slider
+    ul.team-list.slides
+      li.team-item.employee.slide
+        .employee__content
+          p.employee__name Евдокимова Майя
+          p.employee__position Генеральный директор
+          p.employee__cite
+            | Цель нашей работы обеспечить высочайший сервис нашим клиентам.
+            | Дать возможность бизнесу сосредоточиться на своих ключевых задачах, передав функции
+            | управления персоналом, казначейства, финансового учёта и отчётности нам.
+        picture.employee__image
+          source(
+            media="(max-width: 768px)"
+            srcset=require("../../assets/images/team-image-mobile.png")
+            width="190"
+            height="181"
+          )
+          source(
+            media="(max-width: 1120px)"
+            srcset=require("../../assets/images/team-image-tablet.png")
+            width="378"
+            height="359"
+          )
+          img(src=require("../../assets/images/team-image.png"), alt="Майя Евдокимова генеральный директор", width="411" height="446")
+      li.team-item.employee.slide
+        .employee__content
+          p.employee__name Бьёрн Страуструп
+          p.employee__position Создатель С++
+          p.employee__cite
+            | С позволяет легко выстрелить себе в ногу; с C++ это сделать сложнее, но, когда вы это
+            | делаете, вы отстреливаете себе ногу целиком
+        picture.employee__image
+          source(
+            media="(max-width: 768px)"
+            srcset=require("../../assets/images/team-image-2-mobile.png")
+          )
+          source(
+            media="(max-width: 1120px)"
+            srcset=require("../../assets/images/team-image-2-tablet.png")
+          )
+          img(src=require("../../assets/images/team-image-2.png"), alt=" Бьёрн Страуструп")
+      li.team-item.employee.slide
+        .employee__content
+          p.employee__name 	Никлаус Вирт
+          p.employee__position Создатель Pascal и Oberon
+          p.employee__cite
+            | Программы становятся медленнее более быстро, чем компьютеры становятся быстрее
+        picture.employee__image
+          source(
+            media="(max-width: 768px)"
+            srcset=require("../../assets/images/team-image-3-mobile.png")
+          )
+          source(
+            media="(max-width: 1120px)"
+            srcset=require("../../assets/images/team-image-3-tablet.png")
+          )
+          img(src=require("../../assets/images/team-image-3.png"), alt="Никлаус Вирт")
+    .team__bullets.slider-bullets
+      button.team__bullet.slider-bullet
+      button.team__bullet.slider-bullet
+      button.team__bullet.slider-bullet
+    button.team__button.slider-button
+    button.team__button.slider-button
