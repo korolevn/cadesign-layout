@@ -1,0 +1,28 @@
+.students-feedback
+  h2.students-feedback__title Студентам и молодым специалистам
+  p.students-feedback__caption Учишься или недавно закончил направления
+  .students-feedback__content
+    ul.students-feedback-list.studying-programs
+      li.studying-program.studying-program--accountant
+        .studying-program__image
+          svg(class="studying-program-icon" width="26" height="30")
+            use(xlink:href="#accountant")
+        p.studying-program__title Бухгалтерский учёт
+      li.studying-program.studying-program--financial-manager
+        .studying-program__image
+          svg(class="studying-program-icon" width="39" height="25")
+            use(xlink:href="#financial-manager")
+        p.studying-program__title Финансовый менеджмент
+      li.studying-program.studying-program--manager
+        .studying-program__image
+          svg(class="studying-program-icon" width="36" height="29")
+            use(xlink:href="#manager")
+        p.studying-program__title Управление персоналом
+      li.studying-program.studying-program--psychologist
+        .studying-program__image
+          svg(class="studying-program-icon" width="30" height="35")
+            use(xlink:href="#psychologist")
+        p.studying-program__title Социальная психология
+  .students-feedback__feedback.feedback
+    a.feedback__link(href="#") Заполни анкету
+    |  и отправь нам!

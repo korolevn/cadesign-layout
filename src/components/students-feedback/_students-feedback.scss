@@ -1,0 +1,162 @@
+.students-feedback {
+  position: relative;
+  z-index: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 100px;
+  padding: 167px;
+  padding-top: 86px;
+  padding-bottom: 104px;
+
+  &::before, &::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+
+    z-index: -1;
+
+    width: 50%;
+    height: 100%;
+
+    background-color: $gray7;
+  }
+
+  &::before {
+    left: 0;
+    border-radius: 0 36px 36px 0;
+  }
+
+  &::after {
+    right: 0;
+    border-radius: 36px 0 0 36px;
+  }
+}
+
+.students-feedback__title {
+  @include sectionTitle;
+
+  margin: 0;
+
+  text-align: center;
+}
+
+.students-feedback__caption {
+  margin: 0;
+  margin-top: 28px;
+
+  font-size: 22px;
+}
+
+.students-feedback__content {
+  display: flex;
+
+  width: 100%;
+
+  margin-top: 84px;
+  margin-bottom: 84px;
+}
+
+.students-feedback-list {
+  @include clearList;
+
+  display: flex;
+  justify-content: space-between;
+  column-gap: 20px;
+
+  width: 1150px;
+}
+
+.studying-program {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.studying-program__title {
+  margin: 0;
+
+  text-align: center;
+  font-size: 18px;
+}
+
+.studying-program__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 40px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+
+  background-color: $white;
+}
+
+.feedback {
+  font-size: 22px;
+}
+
+.feedback__link {
+  @include link;
+}
+
+@media (max-width: $tabletWidth) {
+  .students-feedback {
+    margin: 0;
+    padding: 0 $desktopHorizontalPaddings;
+    padding-top: 77px;
+    padding-bottom: 64px;
+  }
+
+  .students-feedback__caption {
+    font-size: 18px;
+  }
+
+  .students-feedback__content {
+    justify-content: center;
+
+    margin-top: 67px;
+    margin-bottom: 79px;
+    width: 540px;
+  }
+
+  .students-feedback-list {
+    flex-wrap: wrap;
+    row-gap: 60px;
+    column-gap: 110px;
+  }
+
+  .studying-program {
+    min-width: 200px;
+  }
+
+  .studying-program--manager {
+    order: 1;
+  }
+
+  .studying-program--accountant {
+    order: 2;
+  }
+
+  .studying-program--financial-manager {
+    order: 3;
+  }
+
+  .studying-program--psychologist {
+    order: 4;
+  }
+
+  .feedback {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: $mobileWidth) {
+  .students-feedback {
+    display: none;
+  }
+}
