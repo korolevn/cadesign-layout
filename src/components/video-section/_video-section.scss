@@ -1,0 +1,188 @@
+@mixin thumb {
+  -webkit-appearance: none;
+
+  margin-top: -5px;
+  height: 14px;
+  width: 14px;
+
+  border-radius: 50%;
+  background-color: $white;
+
+  cursor: pointer;
+}
+
+@mixin bar {
+  width: 100%;
+  height: 4px;
+
+  background-color: $gray;
+
+  cursor: pointer;
+}
+
+.video-section {
+  width: 100%;
+}
+
+.video-section__player {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+
+  height: 556px;
+}
+
+.video-section:hover{
+  & .video-section__filter {
+    opacity: 0;
+  }
+
+  & .video-button {
+    opacity: 1;
+  }
+
+  & .progress-bar {
+    display: block;
+  }
+
+  & .controls__time {
+    display: block;
+  }
+}
+
+.video-section__filter {
+  position: absolute;
+
+  width: 100%;
+  height: 556px;
+
+  background-color: $filterColor;
+  opacity: 0.31;
+}
+
+.video {
+  position: absolute;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.video-button {
+  @include emptyButton;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  border: 1px solid $gray;
+  border-radius: 50%;
+  width: 104px;
+  height: 104px;
+
+  opacity: 0.5;
+  transform: translate3d(-50%, -50%, 0);
+  transition-duration: $transitionTime;
+
+  cursor: pointer;
+}
+
+.video-button--play {
+  background-image: url("../../assets/images/play-button.svg");
+  background-position: 53% 50%;
+  background-repeat: no-repeat;
+}
+
+.video-button--pause {
+  display: none;
+
+  background-image: url("../../assets/images/pause-button.svg");
+  background-position: 53% 50%;
+  background-repeat: no-repeat;
+}
+
+.controls {
+  @include container;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  height: 50px;
+}
+
+.progress-bar {
+  display: none;
+
+  width: 100%;
+}
+
+.controls__time {
+  display: none;
+
+  color: $white;
+}
+
+// скрывает стили по умолчанию
+
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+// стилизация прогрессбара
+
+input[type=range]::-webkit-slider-thumb {
+  @include thumb;
+}
+input[type=range]::-moz-range-thumb {
+  @include thumb;
+}
+input[type=range]::-ms-thumb {
+  @include thumb;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  @include bar;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  @include bar;
+}
+input[type=range]::-moz-range-track {
+  @include bar;
+}
+
+@media (max-width: $tabletWidth) {
+  .video-section__player,
+  .video-section__filter {
+    height: 440px;
+  }
+}
+
+@media (max-width: $mobileWidth) {
+  .video-section__player,
+  .video-section__filter {
+    height: 207px;
+  }
+}

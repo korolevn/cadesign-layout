@@ -1,3 +1,7 @@
+#vacancies {
+  scroll-margin-top: 100px;
+}
+
 .vacancies {
   @include container;
 
@@ -71,6 +75,12 @@
 .switch__caption-content {
   margin: 0;
   text-align: center;
+
+  color: $gray3;
+}
+
+.switch__caption-content--choosed {
+  color: $dark;
 }
 
 .switch__button {
@@ -250,6 +260,10 @@
 }
 
 @media (max-width: $mobileWidth) {
+  #vacancies {
+    scroll-margin-top: 60px;
+  }
+
   .vacancies {
     padding: 0;
     padding-top: 40px;

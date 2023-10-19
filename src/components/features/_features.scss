@@ -6,7 +6,6 @@
   @include container;
 
   padding-top: 76px;
-  padding-bottom: 70px;
 }
 
 .features-list {
@@ -104,7 +103,6 @@
 @media (max-width: $tabletWidth) {
   .features {
     padding-top: 62px;
-    padding-bottom: 61px;
   }
 
   .feautures__wrapper {

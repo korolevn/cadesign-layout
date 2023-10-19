@@ -1,31 +1,34 @@
 -
   const values = [
     {
-      "title": "Человеческий капитал", "description" : "Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия."
+      "title": "Человеческий капитал",
+      "description" : "Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия."
     },
     {
-      "title": "Предоставление услуг высочайшего качества", "description": "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана."
+      "title": "Предоставление услуг высочайшего качества",
+      "description": "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана."
     },
     {
-      "title": "Стремление к совершенству", "description": "Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия."
+      "title": "Стремление к совершенству",
+      "description": "Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия."
     }
   ]
 
-.values
+#values.values
   h2.values__title Наши ценности
   .values__wrapper
     ul.values-list
       each value in values
         li.values-item.value
-          h3.value__title= value.title
+          p.value__title= value.title
           p.value__description= value.description
   .values__wrapper.values__slider.slider
     ul.values-list.slides
       each value in values
         li.values-item.value.slide
-          h3.value__title= value.title
+          p.value__title= value.title
           p.value__description= value.description
     .values__bullets.slider-bullets
-      button.values__bullet.slider-bullet
-      button.values__bullet.slider-bullet
-      button.values__bullet.slider-bullet
+      - const bullets = values.length;
+      - for (let i = 0; i < bullets; i++)
+        button.values__bullet.slider-bullet

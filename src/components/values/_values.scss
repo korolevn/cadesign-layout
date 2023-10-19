@@ -1,3 +1,7 @@
+#values {
+  scroll-margin-top: 100px;
+}
+
 .values {
   padding-top: 70px;
   padding-bottom: 90px;
@@ -67,6 +71,10 @@
 }
 
 @media (max-width: $tabletWidth) {
+  #values {
+    scroll-margin-top: 70px;
+  }
+
   .values {
     padding-top: 53px;
     padding-bottom: 76px;

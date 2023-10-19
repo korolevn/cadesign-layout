@@ -1,17 +1,17 @@
 -
   const menuItems = [
-    { title: "О нас", link: "#" },
-    { title: "Наши ценности", link: "#", active: true },
-    { title: "Вакансии", link: "#" },
-    { title: "Начало карьеры", link: "#" },
-    { title: "Контакты", link: "#" }
+    { title: "О нас", link: "#team" },
+    { title: "Наши ценности", link: "#values", active: true },
+    { title: "Вакансии", link: "#vacancies" },
+    { title: "Начало карьеры", link: "#students" },
+    { title: "Контакты", link: "#contacts" }
   ];
 -
-  const socials = [
-    { title: "Вконтакте", link: "#"},
-    { title: "Одноклассники", link: "#" },
-    { title: "Фэйсбук", link: "#" },
-    { title: "Инстаграм", link: "#" }
+  const navigationSocials = [
+    { title: "Вконтакте", link: "#", width: 20, height: 10, icon: "#icon-vk"},
+    { title: "Одноклассники", link: "#", width: 11, height: 18, icon: "#icon-ok" },
+    { title: "Фэйсбук", link: "#", width: 9, height: 17, icon: "#icon-fb" },
+    { title: "Инстаграм", link: "#", width: 15, height: 15, icon: "#icon-inst" }
   ];
 
 header.header
@@ -23,6 +23,7 @@ header.header
 
       nav.header__navigation.navigation.navigation--closed
         button.navigation__toggle-button
+          p.visually-hidden Показать или скрыть меню
         .navigation__wrapper
           ul.navigation__menu.menu
             each item in menuItems
@@ -32,36 +33,33 @@ header.header
               button.dropdown__show-button Социальные сети
               .dropdown__wrapper
                 ul.navigation__socials.socials
+                  each social in navigationSocials
                     li.social
-                      a.social-link(href="#")= Вконтакте
-                        svg(class="social-icon" width="20" height="10")
-                          use(xlink:href="#icon-vk")
-                    li.social
-                      a.social-link(href="#")= Одноклассники
-                        svg(class="social-icon" width="11" height="18")
-                          use(xlink:href="#icon-ok")
-                    li.social
-                      a.social-link(href="#")= Фэйсбук
-                        svg(class="social-icon" width="9" height="17")
-                          use(xlink:href="#icon-fb")
-                    li.social
-                      a.social-link(href="#")= Инстаграм
-                        svg(class="social-icon" width="15" height="15")
-                          use(xlink:href="#icon-inst")
+                      a.social-link(href=social.link)
+                        p.visually-hidden= social.title
+                        svg(class="social-icon" width=social.width height=social.height)
+                          use(xlink:href=social.icon)
+                    //- миксины и require не работают вместе, это баг pug-loader
 
   .header__content
     h1.header__title Энергия твоего роста! – заряжаем твою карьеру
     picture.header__images
       source(
+        class="lazy"
         media="(max-width: 768px)"
-        srcset=require("../../assets/images/bg-header-mobile.png")
+        srcset=require("../../assets/images/bg-header-mobile-blur.png")
+        data-src=require("../../assets/images/bg-header-mobile.png")
       )
       source(
+        class="lazy"
         media="(max-width: 1120px)"
-        srcset=require("../../assets/images/bg-header-tablet.png")
+        srcset=require("../../assets/images/bg-header-tablet-blur.png")
+        data-src=require("../../assets/images/bg-header-tablet.png")
       )
       img.header__image.header__image--first(
-        src=require("../../assets/images/bg-header-desktop.png")
+        class="lazy"
+        src=require("../../assets/images/bg-header-desktop-blur.png")
+        data-src=require("../../assets/images/bg-header-desktop.png")
       )
     button.team-part-button.modal-open-button
       span Cтать частью команды

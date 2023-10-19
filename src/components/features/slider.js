@@ -9,17 +9,19 @@ function initSlider(list) {
   const transitionWidth = 20;
   const gapProperty = parseInt(window.getComputedStyle(list)["column-gap"], 10);
   const gap = gapProperty ? gapProperty : 0;
+  const activeBulletClass = "slider-bullet--active";
 
-  let startX = null;
-  let dragX = null;
-  let clickX = null;
   let currentSlide = 0;
   let slideWidth = slides[0].getBoundingClientRect().width;
-  let x = -currentSlide * slideWidth;
+
+  let xCoord = -currentSlide * slideWidth;
+  let startXCoord = null;
+  let dragXCoord = null;
+  let clickXCoord = null;
   let currentSlideWasChanged = false;
 
   function setPosition() {
-    list.style.transform = `translate3d(${x}px, 0, 0)`;
+    list.style.transform = `translate3d(${xCoord}px, 0, 0)`;
   }
 
   function calculateSlideWidth() {
@@ -29,10 +31,9 @@ function initSlider(list) {
   function dragging(e) {
     list.style.cursor = "grabbing";
 
-
-    dragX = e.touches ? e.touches[0].pageX : e.pageX;
-    const dragShift = dragX - clickX;
-    x = startX + dragShift;
+    dragXCoord = e.touches ? e.touches[0].pageX : e.pageX;
+    const dragShift = dragXCoord - clickXCoord;
+    xCoord = startXCoord + dragShift;
 
     setPosition();
 
@@ -48,12 +49,12 @@ function initSlider(list) {
 
   function slide(index) {
     currentSlide = index;
-    x = -index * slideWidth + (-gap * index);
+    xCoord = -index * slideWidth + (-gap * index);
 
     setPosition();
 
-    bullets.map((bullet) => bullet.classList.remove("slider-bullet--active"));
-    bullets[index].classList.add("slider-bullet--active");
+    bullets.map((bullet) => bullet.classList.remove(activeBulletClass));
+    bullets[index].classList.add(activeBulletClass);
 
     if (buttons.length !== 0) {
       buttons[0].removeAttribute("disabled", "disabled");
@@ -80,8 +81,9 @@ function initSlider(list) {
 
   function drag(e) {
     currentSlideWasChanged = false;
-    clickX = e.touches ? e.touches[0].pageX : e.pageX;
-    startX = x;
+    clickXCoord = e.touches ? e.touches[0].pageX : e.pageX;
+    startXCoord = xCoord;
+    calculateSlideWidth();
 
     list.addEventListener("mousemove", dragging);
     list.addEventListener("touchmove", dragging);
@@ -89,9 +91,22 @@ function initSlider(list) {
     list.addEventListener("touchend", drop);
   }
 
-  list.style.transitionDuration = "0.3s";
+  // троттлинг для оптимизации перерисовок при смене размера экрана
+  function throttle(callee, timeout) {
+    let timer = null;
+    return function perform(...args) {
+      if (timer) return;
 
-  bullets[0].classList.add("slider-bullet--active");
+      timer = setTimeout(() => {
+        callee(...args);
+
+        clearTimeout(timer);
+        timer = null;
+      }, timeout);
+    };
+  }
+
+  bullets[0].classList.add(activeBulletClass);
   bullets.map((bullet, index) => bullet.addEventListener("click", () => {
     slide(index);
   }));
@@ -111,21 +126,6 @@ function initSlider(list) {
         slide(currentSlide);
       }
     }));
-  }
-
-  // троттлинг для оптимизации перерисовок при смене размера экрана
-  function throttle(callee, timeout) {
-    let timer = null;
-    return function perform(...args) {
-      if (timer) return;
-
-      timer = setTimeout(() => {
-        callee(...args);
-
-        clearTimeout(timer);
-        timer = null;
-      }, timeout);
-    };
   }
 
   list.addEventListener("mousedown", drag);

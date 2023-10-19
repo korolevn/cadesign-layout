@@ -6,8 +6,12 @@
     "ignorePatterns": ["node_modules/"],
     "rules": {
       "quotes": ["error", "double"],
+      "import/no-extraneous-dependencies": "off",
       "no-param-reassign": "off",
-      "no-console": "off",
-      "no-unneeded-ternary": "off"
+      "no-unneeded-ternary": "off",
+      "no-unused-expressions": "off",
+      "no-confusing-arrow": "off",
+      "no-case-declarations": "off",
+      "array-callback-return": "off"
     }
   }

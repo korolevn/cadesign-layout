@@ -1,28 +1,39 @@
-.students-feedback
+-
+  const studyingPrograms = [
+    { title: "Бухгалтерский учёт",
+      width: 26,
+      height: 30,
+      icon: "#accountant",
+      modifier: "accountant"
+    },
+    { title: "Финансовый менеджмент",
+      width: 39,
+      height: 25,
+      icon: "#financial-manager",
+      modifier: "financial-manager"
+    },
+    { title: "Управление персоналом",
+      width: 36,
+      height: 29,
+      icon: "#manager",
+      modifier: "manager"
+    },
+    { title: "Социальная психология",
+      width: 30,
+      height: 35,
+      icon: "#psychologist",
+      modifier: "psychologist"
+    }
+  ]
+
+#students.students-feedback
   h2.students-feedback__title Студентам и молодым специалистам
   p.students-feedback__caption Учишься или недавно закончил направления
   .students-feedback__content
     ul.students-feedback-list.studying-programs
-      li.studying-program.studying-program--accountant
-        .studying-program__image
-          svg(class="studying-program-icon" width="26" height="30")
-            use(xlink:href="#accountant")
-        p.studying-program__title Бухгалтерский учёт
-      li.studying-program.studying-program--financial-manager
-        .studying-program__image
-          svg(class="studying-program-icon" width="39" height="25")
-            use(xlink:href="#financial-manager")
-        p.studying-program__title Финансовый менеджмент
-      li.studying-program.studying-program--manager
-        .studying-program__image
-          svg(class="studying-program-icon" width="36" height="29")
-            use(xlink:href="#manager")
-        p.studying-program__title Управление персоналом
-      li.studying-program.studying-program--psychologist
-        .studying-program__image
-          svg(class="studying-program-icon" width="30" height="35")
-            use(xlink:href="#psychologist")
-        p.studying-program__title Социальная психология
+      each studyingProgram in studyingPrograms
+        +studyingProgram(studyingProgram.title, studyingProgram.modifier, studyingProgram.width, studyingProgram.height, studyingProgram.icon)
+
   .students-feedback__feedback.feedback
-    a.feedback__link(href="#") Заполни анкету
+    a.feedback__link(href="#").modal-open-button Заполни анкету
     |  и отправь нам!

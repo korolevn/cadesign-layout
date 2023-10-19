@@ -1,2 +1,38 @@
 mixin showMoreButton(className="")
   button(class=`show-more-button ${className}`) Подробнее
+
+mixin socialLink(title, link, width, height, icon)
+  a.social-link(href=link)
+    p.visually-hidden= title
+    svg(class="social-icon" width=width height=height)
+      use(xlink:href=icon)
+
+mixin feature(title, description, width, height, icon)
+  .feature-image
+    svg(class="feature-icon" width=width height=height)
+      use(xlink:href=icon)
+  span.feature-title= title
+  p.feature-description= description
+
+mixin service(title, width, height, icon)
+  .service-image
+    svg(class="service-icon" width=width height=height)
+      use(xlink:href=icon)
+  span.service-title= title
+  +showMoreButton("service__show-more-button")
+
+mixin studyingProgram(title, modifier, width, height, icon)
+  li(class=`studying-program studying-program--${modifier}`)
+    .studying-program__image
+      svg(class="studying-program-icon" width=width height=height)
+        use(xlink:href=icon)
+    p.studying-program__title= title
+
+mixin vacancy(title, salary, width, height, icon)
+  a.vacancy__link(href="#")
+    h3.vacancy__title= title
+    .vacancy__image
+      svg(class="vacancy-icon" width=width height=height)
+        use(xlink:href=icon)
+    p.vacancy__salary= salary
+    +showMoreButton("vacancy__button")

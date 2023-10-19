@@ -1,12 +1,34 @@
-.vacancies
+-
+  const vacancies = [
+    { title: "Бухгалтер по расчету заработной платы",
+      salary: "68.000 — 180.000 руб.",
+      width: 18,
+      height: 18,
+      icon: "#accounting"
+    },
+    { title: "Бухгалтер по расчету заработной платы",
+      salary: "ЗП по результатам собеседоваия",
+      width: 20,
+      height: 20,
+      icon: "#management"
+    },
+    { title: "Бухгалтер по расчету заработной платы",
+      salary: "68.000 — 80.000 руб.",
+      width: 24,
+      height: 26,
+      icon: "#chart"
+    }
+  ]
+
+#vacancies.vacancies
   h2.vacancies__title Вакансии
   .vacancies-switch.switch
     .switch__caption
-      p.switch__caption-content Общий центр обслуживания (Иваново)
-    <label class="switch__button">
-      <input class="switch__input" type="checkbox">
-      <span class="switch__slider"></span>
-    </label>
+      p.switch__caption-content.switch__caption-content--choosed Общий центр обслуживания (Иваново)
+    label.switch__button
+      p.visually-hidden Фильтровать вакансии
+      input.switch__input(type="checkbox")
+      span.switch__slider
     .switch__caption
       p.switch__caption-content Все вакансии
   .vacancies-select-container
@@ -16,29 +38,9 @@
 
   .vacancies__content
     ul.vacancies-list
-      li.vacancies-item.vacancy
-        a.vacancy__link(href="#")
-          h3.vacancy__title Бухгалтер по расчету заработной платы
-          .vacancy__image
-            svg(class="vacancy-icon" width="18" height="18")
-              use(xlink:href="#accounting")
-          p.vacancy__salary 68.000 — 180.000 руб.
-          button.vacancy__button Подробнее
-      li.vacancies-item.vacancy
-        a.vacancy__link(href="#")
-          h3.vacancy__title Бухгалтер по расчету заработной платы
-          .vacancy__image
-            svg(class="vacancy-icon" width="20" height="20")
-              use(xlink:href="#management")
-          p.vacancy__salary 68.000 — 180.000 руб.
-          button.show-more-button.vacancy__button Подробнее
-      li.vacancies-item.vacancy
-        a.vacancy__link(href="#")
-          h3.vacancy__title Бухгалтер по расчету заработной платы
-          .vacancy__image
-            svg(class="vacancy-icon" width="24" height="26")
-              use(xlink:href="#chart")
-          p.vacancy__salary 68.000 — 180.000 руб.
-          button.show-more-button.vacancy__button Подробнее
+      each vacancy in vacancies
+        li.vacancies-item.vacancy
+          +vacancy(vacancy.title, vacancy.salary, vacancy.width, vacancy.height, vacancy.icon)
+
   button.vacancies__button
     span Больше вакансий

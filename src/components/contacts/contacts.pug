@@ -1,0 +1,23 @@
+-
+  const socials = [
+    { title: "Вконтакте", link: "#", width: 20, height: 10, icon: "#icon-vk"},
+    { title: "Одноклассники", link: "#", width: 11, height: 18, icon: "#icon-ok" },
+    { title: "Фэйсбук", link: "#", width: 9, height: 17, icon: "#icon-fb" },
+    { title: "Инстаграм", link: "#", width: 15, height: 15, icon: "#icon-inst" }
+  ];
+
+#contacts.contacts
+  #map.contacts__map
+  script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript")
+  .contacts__wrapper
+    p.contacts__caption Отдел подбора персонала
+    a(href="tel:88007008000").contacts__phone 8 800 700 8000
+    a(href="mailto:oco_rabota@mail.ru" type="email").contacts__email oco_rabota@mail.ru
+    button.contacts__button.modal-open-button
+      span Cтать частью команды
+    ul.contacts__socials.socials
+      each social in socials
+        li.social.contacts__social
+          +socialLink(social.title, social.link, social.width, social.height, social.icon)
+
+//- title visually hidden todo

@@ -184,17 +184,19 @@
   cursor: pointer;
 }
 
-.socials {
+.navigation__socials {
   display: flex;
   flex-wrap: wrap;
-
-  margin: 0;
   width: 135px;
   height: 100px;
   padding: 20px;
+
+  margin: 0;
+}
+
+.socials {
   list-style-type: none;
   box-sizing: content-box;
-
 }
 
 .social {
@@ -424,7 +426,7 @@
     padding: 0;
   }
 
-  .social {
+  .navigation__socials .social {
     border: 1px solid rgba($color: $white, $alpha: 0.08);
 
     &:hover {
@@ -432,7 +434,7 @@
     }
   }
 
-  .social-icon {
+  .navigation__socials .social-icon {
     fill: $white;
   }
 

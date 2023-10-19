@@ -1,24 +1,28 @@
+-
+  const services = [
+    { title: "Учета и отчетности",
+      width: 30,
+      height: 30,
+      icon: "#accounting"
+    },
+    { title: "Управления персоналом",
+      width: 38,
+      height: 38,
+      icon: "#management"
+    },
+    { title: "Казначейства",
+      width: 30,
+      height: 30,
+      icon: "#treasury"
+    }
+  ]
+
 .services
   h2.services__title
     | Общий центр обслуживания в г. Иваново оказывает услуги энергетическому
     br.services-brake
     |  холдингу Группе компаний в области:
   ul.services-list
-    li.service
-      .service-image
-        svg(class="service-icon" width="30" height="30")
-          use(xlink:href="#accounting")
-      span.service-title Учета и отчетности
-      +showMoreButton("service__show-more-button")
-    li.service
-      .service-image
-        svg(class="service-icon" width="38" height="38")
-          use(xlink:href="#management")
-      span.service-title Управления персоналом
-      +showMoreButton("service__show-more-button")
-    li.service
-      .service-image
-        svg(class="service-icon" width="30" height="30")
-          use(xlink:href="#treasury")
-      span.service-title Казначейства
-      +showMoreButton("service__show-more-button")
+    each service in services
+      li.service
+        +service(service.title, service.width, service.height, service.icon)
