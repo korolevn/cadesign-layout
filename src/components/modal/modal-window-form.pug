@@ -1,0 +1,71 @@
+.modal__window.modal__window--form
+    p.window__title Отклик на вакансию
+    form.window_form.modal-form
+      label.modal-form__label
+        p.modal-form__label-caption Желаемая вакансия *
+        input.modal-form__input#vacancy(required)
+        button.modal-form__clear-invalid-button
+        p.modal-form__input-caption
+
+      label.modal-form__label
+        p.modal-form__label-caption Фамилия, имя и отчество *
+        input.modal-form__input#name(required)
+        button.modal-form__clear-invalid-button
+        p.modal-form__input-caption
+
+      label.modal-form__label
+        p.modal-form__label-caption Мобильный телефон *
+        input.modal-form__input#phone(required)
+        button.modal-form__clear-invalid-button
+        p.modal-form__input-caption
+
+      label.modal-form__label
+        p.modal-form__label-caption E-mail
+        input.modal-form__input#email
+        button.modal-form__clear-invalid-button
+        p.modal-form__input-caption
+
+      label.modal-form__label
+        p.modal-form__label-caption Образование *
+        input.modal-form__input#degree(required)
+        button.modal-form__clear-invalid-button
+        p.modal-form__input-caption
+
+      label.modal-form__label
+        p.modal-form__label-caption Адрес места жительства *
+        input.modal-form__input#address(required)
+        button.modal-form__clear-invalid-button
+        p.modal-form__input-caption
+
+      label.modal-form__label
+        p.modal-form__label-caption Дата рождения
+        input.modal-form__input.modal-form__input--date-text#birthday
+        button.modal-form__clear-invalid-button
+        p.modal-form__input-caption
+        span.modal-form__datepicker
+          button.modal-form__datepicker-button
+          input.modal-form__input(type="date")#birthday
+
+      label.modal-form__label
+        p.modal-form__label-caption Загрузить резюме
+        input.modal-form__input(type="file")#resume
+        button.modal-form__clear-file-button
+        p.modal-form__input-caption
+
+      label.modal-form__label
+        p.modal-form__label-caption Комментарий
+        textarea.modal-form__input.modal-form__input--area(name="", cols="30", rows="10")#comment
+        button.modal-form__clear-invalid-button
+        p.modal-form__input-caption
+
+      .modal-form__agreement.agreement
+        label.agreement__label
+          input.agreement__input(type="checkbox", required)
+          span.agreement__pseudo-checkbox
+          p.agreement__info Я принимаю условия
+            a.agreement__info-link(href="#")  передачи информации
+        button.agreement__send-form-button(disabled)
+          span Отправить
+    button.modal__close-button
+      span
+        p.visually-hidden Закрыть окно
