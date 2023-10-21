@@ -454,6 +454,7 @@ body:has(.modal--active) {
 
   .modal__window {
     margin-top: 0;
+    margin-bottom: 0;
 
     padding: $desktopHorizontalPaddings;
     padding-top: 128px;

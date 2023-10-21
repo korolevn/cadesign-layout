@@ -14,9 +14,9 @@
     { title: "Инстаграм", link: "#", width: 15, height: 15, icon: "#icon-inst" }
   ];
 
-header.header
-  .header__top
-    .header__top-wrapper
+section.main-section
+  header.main-section__header.header
+    .header__wrapper
       .header__logo
         a(href="#")
           include ../../assets/images/logo.svg
@@ -41,9 +41,9 @@ header.header
                           use(xlink:href=social.icon)
                     //- миксины и require не работают вместе, это баг pug-loader
 
-  .header__content
-    h1.header__title Энергия твоего роста! – заряжаем твою карьеру
-    picture.header__images
+  .main-section__content
+    h1.main-section__title Энергия твоего роста! – заряжаем твою карьеру
+    picture.main-section__images
       source(
         class="lazy"
         media="(max-width: 768px)"
@@ -58,7 +58,7 @@ header.header
         data-src=require("../../assets/images/bg-header-tablet.png")
         alt="Изображение сотрудников компании"
       )
-      img.header__image.header__image--first(
+      img.main-section__image.main-section__image--first(
         class="lazy"
         src=require("../../assets/images/bg-header-desktop-blur.png")
         data-src=require("../../assets/images/bg-header-desktop.png")

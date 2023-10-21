@@ -1,22 +1,24 @@
-.header {
+.main-section {
   position: relative;
 
   color: $white;
 }
 
-.header__top {
+.main-section__header {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1;
+}
 
+.header {
   border-bottom: 1px solid $stroke2;
 
   background-color: $white;
 }
 
-.header__top-wrapper {
+.header__wrapper {
   @include container;
 
   display: flex;
@@ -71,7 +73,7 @@
   }
 }
 
-.header__content {
+.main-section__content {
   @include container;
 
   display: flex;
@@ -228,7 +230,7 @@
   fill: $mainBlue;
 }
 
-.header__title {
+.main-section__title {
   margin: 0;
 
   font-family: "HeliosC", Arial, sans-serif;
@@ -238,7 +240,7 @@
   max-width: 440px;
 }
 
-.header__images {
+.main-section__images {
   position: absolute;
   top: 0;
   left: 0;
@@ -264,19 +266,19 @@
 }
 
 @media (max-width: 1240px) {
-  .header__title {
+  .main-section__title {
     font-size: 30px;
     max-width: 384px;
   }
 }
 
 @media (max-width: $tabletWidth) {
-  .header__top-wrapper {
+  .header__wrapper {
     padding-top: 34px;
     padding-bottom: 37px;
   }
 
-  .header__content {
+  .main-section__content {
     height: 398px;
     padding-top: 87px;
     margin-top: 100px;
@@ -448,7 +450,7 @@
     padding: 0 $mobileHorizontalPaddings;
   }
 
-  .header__top-wrapper {
+  .header__wrapper {
     padding: 24px $mobileHorizontalPaddings;
   }
 
@@ -457,14 +459,14 @@
     padding-top: 24px;
   }
 
-  .header__content {
+  .main-section__content {
     margin-top: 76px;
     height: 390px;
     padding-top: 24px;
     padding-bottom: 38px;
   }
 
-  .header__title {
+  .main-section__title {
     align-self: center;
     max-width: 280px;
 
@@ -472,7 +474,7 @@
     font-size: 22px;
   }
 
-  .header__images {
+  .main-section__images {
     justify-content: center;
   }
 

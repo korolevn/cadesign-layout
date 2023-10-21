@@ -1,4 +1,4 @@
-import "./components/header/toggle";
+import "./components/main-section/toggle";
 import "./components/features/slider";
 import "./components/modal/modal";
 import "./components/modal/validation";
