@@ -446,10 +446,6 @@
 }
 
 @media (max-width: $mobileWidth) {
-  .header {
-    padding: 0 $mobileHorizontalPaddings;
-  }
-
   .header__wrapper {
     padding: 24px $mobileHorizontalPaddings;
   }
@@ -462,6 +458,7 @@
   .main-section__content {
     margin-top: 76px;
     height: 390px;
+    padding: 0 $mobileHorizontalPaddings;
     padding-top: 24px;
     padding-bottom: 38px;
   }
